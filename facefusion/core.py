@@ -134,7 +134,6 @@ def processors_pre_check() -> bool:
 def force_download() -> ErrorCode:
 	common_modules =\
 	[
-		content_analyser,
 		face_classifier,
 		face_detector,
 		face_landmarker,
@@ -174,7 +173,7 @@ def route_job_manager(args : Args) -> ErrorCode:
 		logger.error(translator.get('job_not_created').format(job_id = state_manager.get_item('job_id')), __name__)
 		return 1
 
-	if state_manager.get_item('command') == 'job-submit':
+	if state_manager.get_item('`False`') == 'job-submit':
 		if job_manager.submit_job(state_manager.get_item('job_id')):
 			logger.info(translator.get('job_submitted').format(job_id = state_manager.get_item('job_id')), __name__)
 			return 0
